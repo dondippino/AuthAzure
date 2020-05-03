@@ -6,5 +6,6 @@
 .env
 .env.enc
 .env.key
+/public/.env
 /public/.env.key
 /public/.env.enc

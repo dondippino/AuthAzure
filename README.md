@@ -1,42 +1,54 @@
-# Slim Framework 4 Skeleton Application
+# Minimal Azure Active Directory Authentication
 
-[![Coverage Status](https://coveralls.io/repos/github/slimphp/Slim-Skeleton/badge.svg?branch=master)](https://coveralls.io/github/slimphp/Slim-Skeleton?branch=master)
+This application is a tiny one, meant to get access token from Azure Active Directory.
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 4 application. This application uses the latest Slim 4 with Slim PSR-7 implementation and PHP-DI container implementation. It also uses the Monolog logger.
+## Set Up Application
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
-
-## Install the Application
-
-Run this command from the directory in which you want to install your new Slim Framework application.
+Step 1:
+Go to the root directory 
 
 ```bash
-composer create-project slim/slim-skeleton [my-app-name]
+cd <path-to-root-of-app>
 ```
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
-
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writable.
-
-To run the application in development, you can run these commands 
+Step 2:
+Run composer.install
 
 ```bash
-cd [my-app-name]
-composer start
+composer.install
 ```
 
-Or you can use `docker-compose` to run the app with `docker`, so you can run these commands:
-```bash
-cd [my-app-name]
-docker-compose up -d
-```
-After that, open `http://localhost:8080` in your browser.
-
-Run this command in the application directory to run the test suite
+Step 3:
+Create .env file in the root and put in the following content:
 
 ```bash
-composer test
+CLIENT_ID=2e...erx // Insert Client ID of your registered app on Azure
+CLIENT_SECRET=Zkm....de=  // Insert Client Secret of your registered app on Azure
+TENANT_ID=2ee5863b-6ec3-4801-bb52-c9fb1222927b  // Insert Tenant Id from Azure
+AZ_USERNAME=o..com // Insert Azure username
+AZ_PASSWORD=******* //Insert Azure password
+```
+## **Important Note** Please DO NOT upload the .env file to your repository or production environment
+
+
+Step 4:
+Run the command below to encrypt the .env file.
+This produces 2 files .env.enc and .env.key
+
+```bash
+vendor/bin/encrypt-env
 ```
 
-That's it! Now go build something cool.
+Step 5:
+Move files .env.enc and .env.key to public/ directory
+
+Step 6:
+Add the following to .gitignore
+
+```bash
+.env
+.env.enc
+.env.key
+/public/.env.enc
+/public/.env.key
+```
