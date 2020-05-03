@@ -24,7 +24,7 @@ Create .env file in the root and put in the following content:
 ```bash
 CLIENT_ID=2e...erx // Insert Client ID of your registered app on Azure
 CLIENT_SECRET=Zkm....de=  // Insert Client Secret of your registered app on Azure
-TENANT_ID=2ee5863b-6ec3-4801-bb52-c9fb1222927b  // Insert Tenant Id from Azure
+TENANT_ID=4736...ju  // Insert Tenant Id from Azure
 AZ_USERNAME=o..com // Insert Azure username
 AZ_PASSWORD=******* //Insert Azure password
 ```
